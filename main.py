@@ -25,22 +25,43 @@ while list_item + 1 < len(pin_list):
     eind = pin_list[list_item + 1]
 
     # Check of het begin en  eind cijfer even of oneven is en geef vervolgens de lengte van de stap
+
+    #Als alle twee de stappen even zijn
     if (begin % 2) == 0:
         if (eind % 2) == 0:
-            lengte += 1.41213562
-            richting = "schuin"
+            if(begin + eind) == 10:
+                lengte += 2
+                richting = "Recht met twee stappen"
+            else:
+                lengte += 1.41213562
+                richting = "schuin"
+                
 
+    #Als de eerste stap even is maar de tweede oneven
         else:
-            lengte += 1.0
-            richting = "recht"
-    else:
+            lengte += 1.41213562
+            richting = "Een stap schuin"
+ 
+
+    #rechte stap
+    else:   
         if(eind % 2) == 0:
-            lengte += 1.0
-            richting = "recht"
+            if (begin + eind) == 10:
+                lengte += 1.41213562
+                lengte * 2
+                richting = "schuin met twee stappen"
+            else:
+                lengte += 1.0
+                richting = "recht"
 
+    #schuine stap
         else:
-            lengte += 1.41213562
-            richting = "schuin"
+            if(begin + eind) == 10:
+                lengte += 2
+                richting = "Recht met twee stappen"
+            else:
+                lengte += 1.41213562
+                richting = "schuin"
 
 
     print("De stap wordt gezet van: " + str(begin) + " naar " + str(eind) + ", deze stap gaat " + richting + "\n")
